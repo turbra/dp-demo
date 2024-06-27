@@ -23,6 +23,9 @@ mkdir /nfs/pv10
 mkdir /nfs/pv11
 chmod 777 /nfs/pv*
 ```
+
+Update `server:` with your relevant IP
+
 ```
 oc create -f nfs-storage.yaml
 ```

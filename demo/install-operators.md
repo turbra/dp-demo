@@ -98,8 +98,8 @@ podman login registry.redhat.io --authfile auth.json
 
 2. Login with quay_user to the environment's registry or login to your own registry and create a secret:
 ```
-podman login --username "quay_user" --password "openstack" quay.apps.uuid.dynamic.redhatworkshops.io/quay_user/beta-openstack-operator-index
-podman login --username "quay_user" --password "openstack" quay.apps.uuid.dynamic.redhatworkshops.io/quay_user/beta-openstack-operator-index --authfile auth.json
+podman login --username "<YOUR_USER>" --password "<YOUR_PASSWORD>" quay.io/<YOUR_USER>/quay.apps.<CLUSTER_UUID>.dynamic.redhatworkshops.io/quay_user/beta-openstack-operator-index
+podman login --username "<YOUR_USER>" --password "<YOUR_PASSWORD>" quay.io/<YOUR_USER>/quay.apps.<CLUSTER_UUID>.dynamic.redhatworkshops.io/quay_user/beta-openstack-operator-index --authfile auth.json
 ```
 
 or
@@ -111,11 +111,11 @@ podman login <your_registry> -u <user> -p <password> --authfile auth.json
 3. Create the **image index** and push to the registry:
 
 ```
-./opm index add -u podman --pull-tool podman --tag quay.apps.uuid.dynamic.redhatworkshops.io/quay_user/beta-openstack-operator-index:latest -b "registry.redhat.io/rhoso-podified-beta/barbican-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/cinder-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/designate-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/glance-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/heat-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/horizon-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/infra-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/ironic-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/keystone-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/manila-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/mariadb-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/neutron-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/nova-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/octavia-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/openstack-baremetal-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/openstack-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/ovn-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/placement-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/rabbitmq-cluster-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/swift-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/telemetry-operator-bundle:1.0.0,registry.redhat.io/rhoso-edpm-beta/dataplane-operator-bundle:1.0.0,registry.redhat.io/rhoso-edpm-beta/openstack-ansibleee-operator-bundle:1.0.0" --mode semver
+./opm index add -u podman --pull-tool podman --tag quay.io/<YOUR_USER>/quay.apps.<CLUSTER_UUID>.dynamic.redhatworkshops.io/quay_user/beta-openstack-operator-index:latest -b "registry.redhat.io/rhoso-podified-beta/barbican-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/cinder-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/designate-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/glance-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/heat-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/horizon-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/infra-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/ironic-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/keystone-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/manila-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/mariadb-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/neutron-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/nova-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/octavia-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/openstack-baremetal-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/openstack-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/ovn-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/placement-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/rabbitmq-cluster-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/swift-operator-bundle:1.0.0,registry.redhat.io/rhoso-podified-beta/telemetry-operator-bundle:1.0.0,registry.redhat.io/rhoso-edpm-beta/dataplane-operator-bundle:1.0.0,registry.redhat.io/rhoso-edpm-beta/openstack-ansibleee-operator-bundle:1.0.0" --mode semver
 ```
 
 ```
-podman push quay.apps.uuid.dynamic.redhatworkshops.io/quay_user/beta-openstack-operator-index:latest
+podman push quay.io/<YOUR_USER>/quay.apps.<CLUSTER_UUID>.dynamic.redhatworkshops.io/quay_user/beta-openstack-operator-index:latest
 ```
 
 ### Configure the **Catalog Source, OperatorGroup and Subscription** for the **OpenStack Operator**
@@ -145,6 +145,11 @@ cd dp-demo/demo/files
 ```
 
 Update uuid in all precofigured yaml files with the uuid of your cluster.
+
+Example
+```
+quay.io/rh_username/quay.apps.a1b2c3d4-1337-e5f6a7.dynamic.redhatworkshops.io
+```
 
 Apply the preconfigured yaml file for the **osp-ng-openstack-operator.yaml**:
 

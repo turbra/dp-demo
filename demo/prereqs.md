@@ -10,6 +10,7 @@ already included in the demonstration environment such as:
 - podman command line tool on your workstation(bastion host) 
 - Access to repositories which contain the Dev Preview code
 - Access to an existing registry or create a local Quay registry
+- nfs server on your workstation(bastion host)
 - Example YAML files are available in this repository which can be cloned or
 copy and pasted for use. For ease of instructions it will be assumed the repo
 has been cloned

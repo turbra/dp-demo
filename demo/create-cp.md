@@ -44,4 +44,14 @@ oc create secret generic glance-cinder-config --from-file=glance-conf
 oc create -f osp-ng-ctlplane-deploy.yaml
 ```
 
+Note this expects a storage class named `ocs-storagecluster-ceph-rbd`
+```
+LAST SEEN   TYPE      REASON               OBJECT                                                           MESSAGE
+5s          Warning   ProvisioningFailed   persistentvolumeclaim/mysql-db-openstack-cell1-galera-0          storageclass.storage.k8s.io "ocs-storagecluster-ceph-rbd" not found
+5s          Warning   ProvisioningFailed   persistentvolumeclaim/mysql-db-openstack-galera-0                storageclass.storage.k8s.io "ocs-storagecluster-ceph-rbd" not found
+5s          Warning   ProvisioningFailed   persistentvolumeclaim/ovndbcluster-nb-etc-ovn-ovsdbserver-nb-0   storageclass.storage.k8s.io "ocs-storagecluster-ceph-rbd" not found
+5s          Warning   ProvisioningFailed   persistentvolumeclaim/ovndbcluster-sb-etc-ovn-ovsdbserver-sb-0   storageclass.storage.k8s.io "ocs-storagecluster-ceph-rbd" not found
+5s          Warning   ProvisioningFailed   persistentvolumeclaim/persistence-rabbitmq-cell1-server-0        storageclass.storage.k8s.io "ocs-storagecluster-ceph-rbd" not found
+5s          Warning   ProvisioningFailed   persistentvolumeclaim/persistence-rabbitmq-server-0              storageclass.storage.k8s.io "ocs-storagecluster-ceph-rbd" not found
+```
 [back](network-isolation.md) [next](create-dp.md)
